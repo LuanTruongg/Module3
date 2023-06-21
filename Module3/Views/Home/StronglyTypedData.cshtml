@@ -1,0 +1,23 @@
+﻿@using Module3.Models
+
+@model Address
+
+@{
+    ViewData["title"] = "Strongly Typed Data";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["title"]</title>
+</head>
+<body>
+    <h1>@ViewData["Welcome"]</h1>
+    <span>@Model.Street</span><br />
+    <span>@Model.City, @Model.State, @Model.PostalCode </span><br />
+    <br />
+</body>
+</html>
