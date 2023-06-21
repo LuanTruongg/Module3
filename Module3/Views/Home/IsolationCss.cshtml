@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["title"] = "Isolation CSS";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["title"]</title>
+    <link rel="stylesheet" href="~/css/IsolationCss.color-red.css" asp-file-version="true" />
+</head>
+<body>
+    <p>Don't use Isolation CSS</p>
+    <p asp-isolation="color-red">Use Isolation CSS</p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿@using Module3.Models
+
+@model Address
+
+@{
+    ViewData["title"] = "View Bag";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["title"]</title>
+</head>
+<body>
+    <h1>@ViewBag.Welcome</h1>
+    <span>@ViewBag.Address.Street</span>
+    <br />
+    <span>@ViewBag.Address.City, @ViewBag.Address.State, @ViewBag.Address.PostalCode </span>
+    <br />
+    <br />
+</body>
+</html>

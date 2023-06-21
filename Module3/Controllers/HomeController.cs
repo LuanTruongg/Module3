@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Module3.Models;
 using System.Diagnostics;
+using System.Net;
 
 namespace Module3.Controllers
 {
@@ -15,8 +16,42 @@ namespace Module3.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Welcome"] = "Welcome to Index page";
             return View();
         }
+
+        public IActionResult StronglyTypedData()
+        {
+            ViewData["Welcome"] = "Welcome to Strongly Typed Data page.";
+            var viewModel = new Address()
+            {
+                Name = "Microsoft",
+                Street = "One Microsoft Way",
+                City = "Redmond",
+                State = "WA",
+                PostalCode = "98052-6399"
+            };
+            return View(viewModel);
+        }
+        public IActionResult ViewBagg()
+        {
+            ViewBag.Welcome = "Welcome to View Bag page.";
+            ViewBag.Address = new Address()
+            {
+                Name = "Microsoft",
+                Street = "One Microsoft Way",
+                City = "Redmond",
+                State = "WA",
+                PostalCode = "98052-6399"
+            };
+            return View();
+        }
+
+        public IActionResult IsolationCss()
+        {
+            return View();
+        }
+
 
         public IActionResult Privacy()
         {
