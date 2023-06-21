@@ -12,9 +12,16 @@ namespace Module3.Controllers
         {
             _logger = logger;
         }
-
+        [Route("Home/Index")]
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [Route("Home/Edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+            ViewData["id"] = id;
             return View();
         }
 

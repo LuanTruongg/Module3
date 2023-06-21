@@ -1,7 +1,15 @@
+using Module3.Controllers;
+using Module3;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Conventions.Add(
+     new NamespaceRoutingConvention(typeof(HomeController).Namespace!));
+});
 
 var app = builder.Build();
 
@@ -13,6 +21,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -23,5 +33,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "Blog",
+    pattern: "{controller=Blog}/{action=Index}/{id?}");
+
 
 app.Run();
