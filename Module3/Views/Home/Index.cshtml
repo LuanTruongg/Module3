@@ -1,8 +1,36 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Module3.DI;
+@using Module3.Models
+@model List<ToDoItem>
+@inject StatisticsService StatsService
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>To Do Item</h1>
+<p>Total Item: @ViewData["Count"]</p>
+<p>Completed: @ViewData["IsDone"]</p>
+<p>Avg Priority: @ViewData["AvgIsDone"]</p>
+
+<h1>To Do Items</h1>
+<ul>
+    <li>Total Items: @StatsService.GetCount()</li>
+    <li>Completed: @StatsService.GetCompletedCount()</li>
+    <li>Avg. Priority: @StatsService.GetAveragePriority()</li>
+</ul>
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Prioruty</td>
+        <td>Is Done</td>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Priority</td>
+            <td>@item.IsDone</td>
+        </tr>
+    }
+</table>
+
