@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Module3.DI;
 using Module3.Models;
 using System.Diagnostics;
 
@@ -7,15 +8,20 @@ namespace Module3.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IToDoItemRepository _toDoItemRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IToDoItemRepository toDoItemRepository)
         {
+            _toDoItemRepository = toDoItemRepository;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            ViewData["Count"] = _toDoItemRepository.Count();
+            ViewData["IsDone"] = _toDoItemRepository.CountIsDone();
+            ViewData["AvgIsDone"] = _toDoItemRepository.Agv();
+            return View(_toDoItemRepository.List());
         }
 
         public IActionResult Privacy()
