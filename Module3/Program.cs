@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IToDoItemRepository, ToDoItemRepository>();
 builder.Services.AddTransient<StatisticsService>();
+builder.Services.AddTransient<ProfileOptionsService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +26,9 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
+    pattern: "{controller=Users}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "Home",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

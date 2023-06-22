@@ -1,0 +1,24 @@
+﻿@using Module3.Models
+@model Profile
+@using Module3.DI
+@inject ProfileOptionsService options
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Profile</title>
+</head>
+<body>
+    <div>
+        <h1>Update Profile</h1>
+        Name: @Html.TextBoxFor(model => model.Name)
+        <br />
+        Gender: @Html.DropDownList("Gender", options.ListGenders().Select(g => new SelectListItem(){Text = g, Value = g}))
+        <br />
+
+        State:@Html.DropDownList("State", options.ListStates().Select(s => new SelectListItem(){Text = s.Name, Value = s.Code}))
+        <br />
+
+        Fav. Color: State:@Html.DropDownList("Color", options.ListColors().Select(g => new SelectListItem(){Text = g, Value = g}))
+    </div>
+</body>
+</html>
