@@ -2,6 +2,7 @@ using Module3.Controllers;
 using Module3;
 using Module3.DI;
 using Microsoft.Extensions.Configuration;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IDateTime, SystemDateTime>();
 builder.Services.Configure<SampleWebSettings>(builder.Configuration);
+builder.Configuration
+    .AddJsonFile("samplewebsettings.json", optional: false, reloadOnChange: true);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
