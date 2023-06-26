@@ -1,7 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Module3;
-using Module3.Application.Admin.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +26,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 app.MapControllerRoute(
-    name: "Home",
+    name: "default",
     pattern: "{controller=Home}/{action=get}/{id?}");
 
 app.Run();

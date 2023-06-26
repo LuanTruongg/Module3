@@ -1,14 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Module3;
 
-namespace Module3.Application.Admin.Controllers
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace Module3.Controllers
 {
-    [NamespaceRoutingConvention("Module3.Application")]
-    public class HomeController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class HomeController : ControllerBase
     {
-        public IActionResult Index()
+        // GET: api/<HomeController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            return View();
+            return new string[] { "value1", "value2", "value3", "value4" };
+        }
+
+        // GET api/<HomeController>/5
+        [HttpGet("{id?}/name")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/<HomeController>
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT api/<HomeController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE api/<HomeController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }
