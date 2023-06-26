@@ -1,11 +1,13 @@
-using Module3.DI;
+
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IToDoItemRepository, ToDoItemRepository>();
-builder.Services.AddTransient<StatisticsService>();
+builder.Services.AddControllers();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,9 +24,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "Home",
+    pattern: "{controller=Home}/{action=get}/{id?}");
 
 app.Run();
