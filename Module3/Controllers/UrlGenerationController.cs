@@ -16,5 +16,11 @@ namespace Module3.Controllers
         {
             return View();
         }
+
+        //[HttpGet("custom/url/to/destination", Name = "Destination_Route")]
+        public IActionResult GetId(int id)
+        {
+            return View(id);
+        }
     }
 }

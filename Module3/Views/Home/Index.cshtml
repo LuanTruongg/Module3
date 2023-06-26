@@ -3,3 +3,7 @@
 *@
 @{
 }
+<form action="@Url.Action("Source", "UrlGeneration")" method="get">
+    <button type="submit">Ok</button>
+</form>
+<a asp-controller="UrlGeneration" asp-action="GetId" asp-route-id="123">GetId</a>
