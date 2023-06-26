@@ -1,5 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Module3;
+using Module3.Application.Admin.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 

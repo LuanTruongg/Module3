@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Module3;
 
-namespace Module3.Application.Admin.Controllers
+namespace Module3.Application.User.Controllers
 {
     [NamespaceRoutingConvention("Module3.Application")]
-    public class HomeController : Controller
+    public class UserController : Controller
     {
         public IActionResult Index()
         {
