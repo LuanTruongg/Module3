@@ -25,10 +25,14 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-app.MapControllerRoute(name: "blog",
-                pattern: "blog/{*article}",
-                defaults: new { controller = "Blog", action = "Article" });
-app.MapControllerRoute(name: "default",
-               pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapAreaControllerRoute("blog_route", "Blog",
+        "Manage/{controller}/{action}/{id?}");
+app.MapAreaControllerRoute(name: "zebra_route",
+                                     areaName: "Zebra",
+                                     pattern: "Manage/{controller}/{action}/{id?}");
+app.MapControllerRoute("default_route", "{controller}/{action}/{id?}");
+//app.MapControllerRoute("blog_route", "Manage/{controller}/{action}/{id?}",
+//        defaults: new { area = "Blog" }, constraints: new { area = "Blog" });
+//app.MapControllerRoute("default_route", "{controller}/{action}/{id?}");
 
 app.Run();

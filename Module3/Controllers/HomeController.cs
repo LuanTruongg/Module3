@@ -6,7 +6,8 @@ namespace Module3.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var url = Url.Action("Index", "Blog", new { Area = "Zebra" });
+            return Ok($"URL: {url}");
         }
     }
 }
