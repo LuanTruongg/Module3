@@ -16,7 +16,7 @@ namespace Module3.Controllers
         }
 
         // GET api/<HomeController>/5
-        [HttpGet("{id:regex(^\\w+$)}/name")]
+        [HttpGet("{id?}")]
         public string Get(string id)
         {
             return id;
