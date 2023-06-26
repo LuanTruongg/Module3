@@ -4,30 +4,25 @@
 
 namespace Module3.Controllers
 {
-    //[Route("api/[controller]/[action]" , Name = "[controller]_[action]")]
     [Route("api/[controller]")]
     [ApiController]
     public class HomeController : ControllerBase
     {
-        //[Route("[controller]/[action]")]
-        public IActionResult Index()
-        {
-            return Ok();
-        }
         // GET: api/<HomeController>
-        //[HttpGet]
-        [HttpGet("[controller]/[action]")]
+        [HttpGet("route1")]
+        [HttpGet("route2")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/Home/5
+        // GET api/<HomeController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
+
         // POST api/<HomeController>
         [HttpPost]
         public void Post([FromBody] string value)
