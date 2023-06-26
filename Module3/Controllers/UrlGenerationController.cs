@@ -4,16 +4,17 @@ namespace Module3.Controllers
 {
     public class UrlGenerationController : Controller
     {
-        public IActionResult Index()
+        [HttpGet("")]
+        public IActionResult Source()
         {
-            var url = Url.Action("Buy", "Products", new { id = 17, color = "red" });
-            return Content(url!);
+            var url = Url.RouteUrl("Destination_Route");
+            return View();
         }
-        public IActionResult Index2()
+
+        [HttpGet("custom/url/to/destination", Name = "Destination_Route")]
+        public IActionResult Destination()
         {
-            var url = Url.Action("Buy", "Products", new { id = 17 }, protocol: Request.Scheme);
-            // Returns https://localhost:5001/Products/Buy/17
-            return Content(url!);
+            return View();
         }
     }
 }
