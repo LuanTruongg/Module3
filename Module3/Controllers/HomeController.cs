@@ -4,14 +4,11 @@
 
 namespace Module3.Controllers
 {
-    [Route("api/[controller]")]
-    [Route("Home")]
+    [Route("api/[controller]/[action]" , Name = "[controller]_[action]")]
     [ApiController]
     public class HomeController : ControllerBase
     {
-        [Route("")]
-        [Route("/")]
-        [Route("Index")]
+        //[Route("[controller]/[action]")]
         public IActionResult Index()
         {
             return Ok();
@@ -24,7 +21,6 @@ namespace Module3.Controllers
         }
 
         // GET api/Home/5
-        //[HttpGet("{id}")]
         [HttpGet("{id}")]
         public string Get(int id)
         {
