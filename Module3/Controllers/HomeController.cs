@@ -16,10 +16,10 @@ namespace Module3.Controllers
         }
 
         // GET api/<HomeController>/5
-        [HttpGet("{id?}/name")]
-        public string Get(int id)
+        [HttpGet("{id:regex(^\\w+$)}/name")]
+        public string Get(string id)
         {
-            return "value";
+            return id;
         }
 
         // POST api/<HomeController>
