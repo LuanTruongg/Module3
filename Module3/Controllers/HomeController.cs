@@ -16,7 +16,8 @@ namespace Module3.Controllers
         }
 
         // GET api/<HomeController>/5
-        [HttpGet("{id}")]
+        //[HttpGet("{id}")]
+        [HttpGet("{id}", Name = "Products_List")]
         public string Get(int id)
         {
             return "value";
