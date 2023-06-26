@@ -1,38 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Module3.DI;
-using Module3.Models;
-using System.Diagnostics;
 
 namespace Module3.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IToDoItemRepository _toDoItemRepository;
-
-        public HomeController(ILogger<HomeController> logger, IToDoItemRepository toDoItemRepository)
-        {
-            _toDoItemRepository = toDoItemRepository;
-            _logger = logger;
-        }
-
+        [Route("~/")]
+        [Route("Home")]
+        [Route("[controller]/[action]")]
+        //[Route("~/Home/Index")]
+        //[Route("Home/Index/{id?}")]
         public IActionResult Index()
         {
-            ViewData["Count"] = _toDoItemRepository.Count();
-            ViewData["IsDone"] = _toDoItemRepository.CountIsDone();
-            ViewData["AvgIsDone"] = _toDoItemRepository.Agv();
-            return View(_toDoItemRepository.List());
+            return Ok("Hello from Index");
         }
-
-        public IActionResult Privacy()
+        //[Route("Home/About")]
+        //[Route("Home/About/{id?}")]
+        [Route("[controller]/[action]")]
+        public IActionResult About()
         {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return Ok("Hello from About");
         }
     }
 }
