@@ -1,11 +1,10 @@
-using Module3.DI;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IToDoItemRepository, ToDoItemRepository>();
-builder.Services.AddTransient<StatisticsService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,7 +21,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.MapControllerRoute(name: "blog",
+                pattern: "blog/{*article}",
+                defaults: new { controller = "Blog", action = "Article" });
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
