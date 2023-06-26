@@ -1,38 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Module3.DI;
-using Module3.Models;
-using System.Diagnostics;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Module3.Controllers
 {
-    public class HomeController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class HomeController : ControllerBase
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IToDoItemRepository _toDoItemRepository;
-
-        public HomeController(ILogger<HomeController> logger, IToDoItemRepository toDoItemRepository)
+        // GET: api/<HomeController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            _toDoItemRepository = toDoItemRepository;
-            _logger = logger;
+            return new string[] { "value1", "value2" };
         }
 
-        public IActionResult Index()
+        // GET api/<HomeController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            ViewData["Count"] = _toDoItemRepository.Count();
-            ViewData["IsDone"] = _toDoItemRepository.CountIsDone();
-            ViewData["AvgIsDone"] = _toDoItemRepository.Agv();
-            return View(_toDoItemRepository.List());
+            return "value";
         }
 
-        public IActionResult Privacy()
+        // POST api/<HomeController>
+        [HttpPost]
+        public void Post([FromBody] string value)
         {
-            return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        // PUT api/<HomeController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        // DELETE api/<HomeController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }
