@@ -1,16 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Module3.Controllers
 {
-    [Route("api/[controller]")]
+    public class MyApiControllerAttribute : Attribute, IRouteTemplateProvider
+    {
+        public string Template => "api/[controller]";
+        public int? Order => 2;
+        public string Name { get; set; } = string.Empty;
+    }
+    [MyApiController]
     [ApiController]
     public class HomeController : ControllerBase
     {
         // GET: api/<HomeController>
-        [HttpGet("route1")]
-        [HttpGet("route2")]
+        [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
