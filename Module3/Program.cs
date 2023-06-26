@@ -20,9 +20,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-app.MapControllerRoute("default","{controller}/{action}/{id?}");
-//app.MapControllerRoute(
-//    name: "default",
-//    pattern: "{controller=Home}/{action=Index}/{id?}");
+//app.MapControllerRoute("MyDemo2", "{controller}/{action}/{id?}");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=MyDemo2}/{action=Index}/{id?}");
 
 app.Run();
