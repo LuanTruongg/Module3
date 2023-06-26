@@ -4,43 +4,38 @@
 
 namespace Module3.Controllers
 {
-    //[Route("api/[controller]/[action]" , Name = "[controller]_[action]")]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
-    public class HomeController : ControllerBase
+    public class SubscriptionManagementController : ControllerBase
     {
-        //[Route("[controller]/[action]")]
-        public IActionResult Index()
-        {
-            return Ok();
-        }
-        // GET: api/<HomeController>
-        //[HttpGet]
-        [HttpGet("[controller]/[action]")]
-        public IEnumerable<string> Get()
+        // GET: api/<SubscriptionManagementController>
+        [HttpGet]
+        //[HttpGet("[controller]/[action]")]
+        public IEnumerable<string> ListAll()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/Home/5
+        // GET api/<SubscriptionManagementController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-        // POST api/<HomeController>
+
+        // POST api/<SubscriptionManagementController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<HomeController>/5
+        // PUT api/<SubscriptionManagementController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<HomeController>/5
+        // DELETE api/<SubscriptionManagementController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
