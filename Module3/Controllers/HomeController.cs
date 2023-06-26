@@ -8,6 +8,7 @@ namespace Module3.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
+
         // GET: api/<HomeController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -15,14 +16,13 @@ namespace Module3.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<HomeController>/5
+        // GET api/Home/5
         //[HttpGet("{id}")]
         [HttpGet("{id}", Name = "Products_List")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<HomeController>
         [HttpPost]
         public void Post([FromBody] string value)
