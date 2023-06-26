@@ -1,24 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace Module3.Controllers
 {
-    public class HomeController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class HomeController : ControllerBase
     {
-        [Route("~/")]
-        [Route("Home")]
-        [Route("[controller]/[action]")]
-        //[Route("~/Home/Index")]
-        //[Route("Home/Index/{id?}")]
-        public IActionResult Index()
+        // GET: api/<HomeController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            return Ok("Hello from Index");
+            return new string[] { "value1", "value2" };
         }
-        //[Route("Home/About")]
-        //[Route("Home/About/{id?}")]
-        [Route("[controller]/[action]")]
-        public IActionResult About()
+
+        // GET api/<HomeController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            return Ok("Hello from About");
+            return "value";
+        }
+
+        // POST api/<HomeController>
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT api/<HomeController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE api/<HomeController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
         }
     }
 }
