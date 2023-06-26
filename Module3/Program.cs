@@ -1,11 +1,19 @@
-using Module3.DI;
+
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Module3.Test;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IToDoItemRepository, ToDoItemRepository>();
-builder.Services.AddTransient<StatisticsService>();
+builder.Services.AddControllers();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Conventions.Add(new RouteTokenTransformerConvention(
+                                 new SlugifyParameterTransformer()));
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,9 +30,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.MapControllerRoute("SubscriptionManagement", "api/{controller=SubscriptionManagement}/{action=ListALl}/{id?}");
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "Home",
+    pattern: "api/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
