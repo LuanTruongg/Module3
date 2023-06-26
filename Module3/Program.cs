@@ -27,6 +27,6 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=UrlGeneration}/{action=Source}/{id?}");
+    pattern: "{controller=UrlGeneration}/{action=Index}/{id?}");
 
 app.Run();
