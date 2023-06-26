@@ -5,10 +5,17 @@
 namespace Module3.Controllers
 {
     [Route("api/[controller]")]
+    [Route("Home")]
     [ApiController]
     public class HomeController : ControllerBase
     {
-
+        [Route("")]
+        [Route("/")]
+        [Route("Index")]
+        public IActionResult Index()
+        {
+            return Ok();
+        }
         // GET: api/<HomeController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -18,7 +25,7 @@ namespace Module3.Controllers
 
         // GET api/Home/5
         //[HttpGet("{id}")]
-        [HttpGet("{id}", Name = "Products_List")]
+        [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
