@@ -1,36 +1,9 @@
-﻿@using Module3.DI;
-@using Module3.Models
-@model List<ToDoItem>
-@inject StatisticsService StatsService
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>To Do Item</h1>
-<p>Total Item: @ViewData["Count"]</p>
-<p>Completed: @ViewData["IsDone"]</p>
-<p>Avg Priority: @ViewData["AvgIsDone"]</p>
-
-<h1>To Do Items</h1>
-<ul>
-    <li>Total Items: @StatsService.GetCount()</li>
-    <li>Completed: @StatsService.GetCompletedCount()</li>
-    <li>Avg. Priority: @StatsService.GetAveragePriority()</li>
-</ul>
-<table>
-    <tr>
-        <td>Name</td>
-        <td>Prioruty</td>
-        <td>Is Done</td>
-    </tr>
-    @foreach(var item in Model)
-    {
-        <tr>
-            <td>@item.Name</td>
-            <td>@item.Priority</td>
-            <td>@item.IsDone</td>
-        </tr>
-    }
-</table>
-
+<form action="@Url.Action("Source", "UrlGeneration")" method="get">
+    <button type="submit">Ok</button>
+</form>
+<a asp-controller="UrlGeneration" asp-action="GetId" asp-route-id="123">GetId</a>
